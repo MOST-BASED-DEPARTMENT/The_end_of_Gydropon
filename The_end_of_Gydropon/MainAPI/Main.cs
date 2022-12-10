@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data.SqlClient;
 
-namespace The_end_of_Gydropon.API
+namespace The_end_of_Gydropon.MainAPI
 {
-    public class Base
+    public class Main
     {
         private static string CreateConnectionString(string userId, string password) =>
             $"server=ip; database=db; user id={userId}; password={password};";
@@ -48,5 +48,7 @@ namespace The_end_of_Gydropon.API
 
             return "0";
         }
+        
+        
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 
 namespace The_end_of_Gydropon.Tests
 {
@@ -12,8 +11,11 @@ namespace The_end_of_Gydropon.Tests
         public void TestLogging()
         {
             string randomText = "bebeebe";
-            string addingInfo(string text) => text + " - on " + DateTime.Now.ToString(CultureInfo.InvariantCulture);
-            
+            string addingInfo(string text)
+            {
+                return text + " - on " + DateTime.Now.ToString(CultureInfo.InvariantCulture);
+            }
+
             string testText = addingInfo(randomText);
             ErrorMessages.BaseErrors.WriteLogMessage(randomText);
             string logText = System.IO.File.ReadAllText(@"D:\log.txt");
@@ -22,9 +24,16 @@ namespace The_end_of_Gydropon.Tests
         }
 
         [Test]
-        public void TestShtotoTam()
+        public void TestErrorCodes()
         {
+            string randomText = "bebeebe";
+            string addingInfo(string text) => text + " - on " + DateTime.Now.ToString(CultureInfo.InvariantCulture);
             
+            string testText = addingInfo(randomText);
+            ErrorMessages.BaseErrors.WriteLogMessage(randomText);
+            string logText = System.IO.File.ReadAllText(@"D:\log.txt");
+            
+            Assert.AreEqual(testText, logText);
         }
     }
 }
