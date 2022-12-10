@@ -14,13 +14,12 @@ namespace The_end_of_Gydropon.API
         {
             try
             {
-                string task = null;
                 using (SqlConnection connection = new SqlConnection(CreateConnectionString("3", "34")))
                 {
 
                 }
 
-                return task;
+                return null;
             }
             catch (Exception error)
             {
@@ -40,7 +39,7 @@ namespace The_end_of_Gydropon.API
 
                 }
 
-                return task;
+                return null;
             }
             catch (Exception error)
             {
