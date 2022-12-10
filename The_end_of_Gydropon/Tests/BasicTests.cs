@@ -4,15 +4,20 @@ using The_end_of_Gydropon.DBApi;
 namespace The_end_of_Gydropon.Tests
 {
     [TestFixture]
-    public static class BasicTests
+    public class BasicTests
     {
         private static string _connectionString = null;
 
-        [Test, Description("My really really cool test")]
+        private protected static string ConnectionString
+        {
+            get => _connectionString;
+            set => _connectionString = value;
+        }
+
+        [Test, Description("Тест на забирание данных с БД")]
         public static void TestSpecificTasks()
         {
-            Main.RunProcedure("");
-            Assert.AreEqual();
+            Assert.AreEqual(Taking.RunProcedure("add_task"), "бурундук");
         }
     }
 }

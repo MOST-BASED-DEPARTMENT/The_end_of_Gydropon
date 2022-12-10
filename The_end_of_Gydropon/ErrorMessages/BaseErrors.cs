@@ -23,10 +23,10 @@ namespace The_end_of_Gydropon.ErrorMessages
         }
         
         /// <summary>
-        /// 
+        /// Записывает Ошибку в Файл с Кодом Ошибки
         /// </summary>
-        /// <param name="logMessage"></param>
-        /// <param name="ErrorCode"></param>
+        /// <param name="logMessage">текст ошибки с Exception.Message</param>
+        /// <param name="ErrorCode">код ошибки</param>
         public static void WriteLogMessage(string logMessage, int ErrorCode)
         {
             using (StreamWriter tw = new StreamWriter(_errorLogPath))
@@ -39,6 +39,11 @@ namespace The_end_of_Gydropon.ErrorMessages
 
         #region ErrorMessages
 
+        /// <summary>
+        /// Метод возвращающий текст ошибки
+        /// </summary>
+        /// <param name="code">код ошибки</param>
+        /// <returns>текст ошибки</returns>
         private static string ChooseErrorCode(int code)
         {
             switch (code)

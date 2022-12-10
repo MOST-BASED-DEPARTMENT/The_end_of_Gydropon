@@ -1,4 +1,4 @@
-﻿алкоголя слишком много
+﻿алкоголя слишком много, стало еще больше
 
 add_task(executor_id : int, field_id: int, task_type_id: int, task_status_id: int, task_date: date, task_start_time: time, task_finishing_time: time)
 
