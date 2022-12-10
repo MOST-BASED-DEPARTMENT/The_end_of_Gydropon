@@ -14,7 +14,9 @@ namespace The_end_of_Gydropon.API
             {
                 using (SqlConnection connection = new SqlConnection(CreateConnectionString("3", "34")))
                 {
-
+                    connection.Open();
+                    
+                    connection.Close();
                 }
 
                 return null;
