@@ -5,8 +5,6 @@ namespace The_end_of_Gydropon.API
 {
     public class Base
     {
-        
-        
         private static string CreateConnectionString(string userId, string password) =>
             $"server=ip; database=db; user id={userId}; password={password};";
         

@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Globalization;
+using System.IO;
 
 namespace The_end_of_Gydropon.ErrorMessages
 {
@@ -10,7 +12,7 @@ namespace The_end_of_Gydropon.ErrorMessages
         {
             using (StreamWriter tw = new StreamWriter(_errorLogPath))
             {
-                //logMessage = logMessage + " - on " + DateTime.Now.ToString(CultureInfo.InvariantCulture);
+                logMessage = logMessage + " - on " + DateTime.Now.ToString(CultureInfo.InvariantCulture);
                 tw.Write(logMessage);
                 tw.Close();
             }

@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Globalization;
+using NUnit.Framework;
 
 namespace The_end_of_Gydropon.Tests
 {
@@ -8,8 +10,10 @@ namespace The_end_of_Gydropon.Tests
         [Test]
         public void TestSpecificTasks()
         {
-            string testText = "bebeeb";
-            ErrorMessages.BaseErrors.WriteLogMessage(testText);
+            string randomText = "bebeebe";
+            string addingInfo(string text) => text + " - on " + DateTime.Now.ToString(CultureInfo.InvariantCulture);
+            string testText = addingInfo(randomText);
+            ErrorMessages.BaseErrors.WriteLogMessage(randomText);
             string logText = System.IO.File.ReadAllText(@"D:\log.txt");
             Assert.AreEqual(testText, logText);
         }

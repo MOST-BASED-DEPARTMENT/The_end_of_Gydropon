@@ -4,12 +4,12 @@ using The_end_of_Gydropon.API;
 namespace The_end_of_Gydropon.Tests
 {
     [TestFixture]
-    public class BasicTests
+    public static class BasicTests
     {
-        private string ConnectionString;
+        private static string _connectionString = null;
 
         [Test, Description("My really really cool test")]
-        public void TestSpecificTasks()
+        public static void TestSpecificTasks()
         {
             Base.TakeTasks("sdfsd");
         }
