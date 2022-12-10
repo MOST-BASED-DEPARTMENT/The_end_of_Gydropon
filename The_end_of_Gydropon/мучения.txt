@@ -1,8 +1,48 @@
 ﻿алкоголя слишком много, стало еще больше
+вместо запуска кода делать запросы
 
-add_task(executor_id : int, field_id: int, task_type_id: int, task_status_id: int, task_date: date, task_start_time: time, task_finishing_time: time)
+----------------------------------------
 
-add_field(field_identifier: string, field_area: int)
+абстракт класс объект базы данных
+add, delete, update
+от него пиздюки
+поля название имя таблицы
+список название столбца : значение
+количество значений
+конструктор принимающий массив params*
+если его длиннна != количеству значений, то кидать исключение
+статик словарь название запроса : стринг делегат доступных sql запросов
+
+конструктор статик
+обьявляются функции нужных ыйд зпросов
+создаются добавляются в статичный список делегаты этих запросов
+один класс на каждую таблицу
+пиздюки оверрайдят маму выполняя что надо
+
+
+названия полей в апи нигде не хранятся их преобразует в новый обьект модель на фронте
+
+
+в апи 1 метод
+
+api/{object}/{method}/{values}
+
+
+
+
+----------------------------------------
+
+Под каждую таблицу должен быть метод add_название таблицы с аргументами под каждое поле кроме id таблицы
+
+Под каждый метод должен быть ещё один метод с тем же названием, только вместо add - edit и к существующим аргументам первый - id
+
+Под каждый метод должен быть ещё один метод с тем же названием, только вместо add - delete и единственный аргумент - id
+
+Пример правильных методов (НЕ АКТУАЛЬНО)
+
+add_task(executor_id : int,  task_field_id: int, task_type_id: int, task_status_id: int, task_date: date, task_start_time: time, task_finishing_time: time, task_description: string)
+
+add_field(field_identifier: string, field_area: int,  field_plant_id)
 
 add_user(user_post_id: int, user_login: string, user_password: string)
 
@@ -10,7 +50,7 @@ add_post(post_name: string,  superior_post_id: int)
 
 add_task_status(task_status_name: string)
 
-add_plant(plant_name: string,  plant_type_id: int, task_type_id: int)
+add_plant(plant_name: string,  plant_type_id: int)
 
 add_plant_type(type_name: string)
 
