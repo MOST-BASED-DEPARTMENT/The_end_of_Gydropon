@@ -1,1 +1,25 @@
 ﻿алкоголя слишком много
+
+add_task(executor_id : int, field_id: int, task_type_id: int, task_status_id: int, task_date: date, task_start_time: time, task_finishing_time: time)
+
+add_field(field_identifier: string, field_area: int)
+
+add_user(user_post_id: int, user_login: string, user_password: string)
+
+add_post(post_name: string,  superior_post_id: int)
+
+add_task_status(task_status_name: string)
+
+add_plant(plant_name: string,  plant_type_id: int, task_type_id: int)
+
+add_plant_type(type_name: string)
+
+add_task_type(task_type_name: string, superior_type_id: int)
+
+add_chemical(chemical_name: string,  chemicals_type_id: int, task_type_id: int)
+
+add_chemical_type(chemical_type_name: string)
+
+add_agricultural_machinery(agricultural_machinery_name: string, agricultural_machinery_type_id: int, task_type_id: int)
+
+add_agricultural_machinery_type(agricultural_machinery_type_name: string)

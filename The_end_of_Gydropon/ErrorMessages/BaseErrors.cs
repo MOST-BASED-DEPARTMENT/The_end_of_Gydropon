@@ -7,7 +7,11 @@ namespace The_end_of_Gydropon.ErrorMessages
     public class BaseErrors
     { 
         private static string _errorLogPath = @"D:\log.txt";
-
+        
+        /// <summary>
+        /// Записывает ошибку в файл
+        /// </summary>
+        /// <param name="logMessage">Текст ошибки</param>
         public static void WriteLogMessage(string logMessage)
         {
             using (StreamWriter tw = new StreamWriter(_errorLogPath))
@@ -18,11 +22,15 @@ namespace The_end_of_Gydropon.ErrorMessages
             }
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logMessage"></param>
+        /// <param name="ErrorCode"></param>
         public static void WriteLogMessage(string logMessage, int ErrorCode)
         {
             using (StreamWriter tw = new StreamWriter(_errorLogPath))
             {
-                
                 logMessage = logMessage + " - on " + DateTime.Now.ToString(CultureInfo.InvariantCulture);
                 tw.WriteLine(logMessage);
                 tw.Close();

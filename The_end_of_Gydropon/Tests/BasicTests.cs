@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using The_end_of_Gydropon.MainAPI;
+using The_end_of_Gydropon.DBApi;
 
 namespace The_end_of_Gydropon.Tests
 {
@@ -11,7 +11,8 @@ namespace The_end_of_Gydropon.Tests
         [Test, Description("My really really cool test")]
         public static void TestSpecificTasks()
         {
-            Main.TakeTasks("sdfsd");
+            Main.RunProcedure("");
+            Assert.AreEqual();
         }
     }
 }
