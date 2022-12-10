@@ -1,46 +1,41 @@
-﻿using System;
-using System.Data;
-using System.Data.SqlClient;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using System.Collections.Generic;
 
 namespace The_end_of_Gydropon.DBApi
 {
-    public class Main
+    public abstract class Main
     {
-        private SqlConnection _servConn = new SqlConnection();
+        protected const string connString = 
+            "Data Source = 46.39.232.190; Initial Catalog = test;User Id=TestUser; Password=vag!nA228##;";
+        
 
-        /// <summary>
-        /// Метод который из пароля и логина делает ConnectionString
-        /// </summary>
-        /// <param name="userId">Логин</param>
-        /// <param name="password">Пароль</param>
-        /// <returns>ConnectionString для подключения к базе данных</returns>
-        public static string CreateConnectionString(string userId, string password) =>
-            $"Data Source = 46.39.232.190; Initial Catalog = test;User Id={userId}; Password={password};";
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private static bool ConnectWithDB(string Login, string Password)
+        private Dictionary<string, string> procedureStuff = new Dictionary<string, string>
         {
-            using (SqlConnection connection = new SqlConnection(CreateConnectionString(Login, Password)))
-            {
-                try
-                {
-                    connection.Open();
-                    return true;
-                }
-                catch (SqlException)
-                {
-                    return false;
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
+            {"add_task", "SELECT * ZAEBIS"},
+            {"add_task_status", "SELECT * ZAEBIS"},
+            {"add_task_type", "SELECT * ZAEBIS"},
+            {"add_field", "SELECT * ZAEBIS"},
+            {"add_user", "SELECT * ZAEBIS"},
+            {"add_post", "SELECT * ZAEBIS"},
+            {"add_plant", "SELECT * ZAEBIS"},
+            {"add_plant_status", "SELECT * ZAEBIS"},
+            {"add_chemical", "SELECT * ZAEBIS"},
+            {"add_chemical", "SELECT * ZAEBIS"},
+            {"add_agricultural_machinery", "SELECT * ZAEBIS"},
+            {"add_agricultural_machinery_type", "SELECT * ZAEBIS"}
+        };
+        
+        public virtual void Add()
+        {
         }
+        
+        public virtual void Delete()
+        {
+        }
+        
+        public virtual void Update()
+        {
+        }
+        
+        public string TableName { get; set; }
     }
 }
