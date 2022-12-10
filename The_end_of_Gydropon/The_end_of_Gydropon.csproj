@@ -50,6 +50,7 @@
         <Compile Include="ErrorMessages\BaseErrors.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Tests\BasicTests.cs" />
+        <Compile Include="Tests\ErrorTests.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
