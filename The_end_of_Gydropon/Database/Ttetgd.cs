@@ -1,7 +1,6 @@
 ﻿using System.Data.SqlClient;
-using Newtonsoft.Json;
 
-namespace The_end_of_Gydropon.DBApi
+namespace The_end_of_Gydropon.Database
 {
     public class Ttetgd : Main
     {

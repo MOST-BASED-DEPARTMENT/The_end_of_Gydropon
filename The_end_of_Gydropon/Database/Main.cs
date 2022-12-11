@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace The_end_of_Gydropon.DBApi
+namespace The_end_of_Gydropon.Database
 {
     public abstract class Main
     {
