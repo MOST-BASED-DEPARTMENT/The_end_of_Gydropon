@@ -1,4 +1,4 @@
-﻿namespace The_end_of_Gydropon.Database
+﻿namespace API.Database
 {
     public class Deleting : Main
     {
