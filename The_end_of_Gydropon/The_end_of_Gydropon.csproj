@@ -139,6 +139,9 @@
         <Reference Include="Microsoft.AspNetCore.Mvc.ViewFeatures, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
           <HintPath>..\packages\Microsoft.AspNetCore.Mvc.ViewFeatures.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.ViewFeatures.dll</HintPath>
         </Reference>
+        <Reference Include="Microsoft.AspNetCore.Mvc.WebApiCompatShim, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+          <HintPath>..\packages\Microsoft.AspNetCore.Mvc.WebApiCompatShim.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.WebApiCompatShim.dll</HintPath>
+        </Reference>
         <Reference Include="Microsoft.AspNetCore.Razor, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
           <HintPath>..\packages\Microsoft.AspNetCore.Razor.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Razor.dll</HintPath>
         </Reference>
@@ -452,6 +455,9 @@
         <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
         </Reference>
+        <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+          <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+        </Reference>
         <Reference Include="System.Numerics" />
         <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
@@ -477,6 +483,7 @@
         <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
         </Reference>
+        <Reference Include="System.Runtime.Serialization" />
         <Reference Include="System.Security" />
         <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
@@ -525,6 +532,9 @@
         <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
           <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
         </Reference>
+        <Reference Include="System.Web.Http.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Web.Http.Common.4.0.20126.16343\lib\net40\System.Web.Http.Common.dll</HintPath>
+        </Reference>
         <Reference Include="System.Windows.Forms" />
         <Reference Include="System.Xml" />
         <Reference Include="System.Xml.Linq" />
@@ -543,7 +553,9 @@
         <Reference Include="WindowsBase" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Database\internet.cs" />
+        <Compile Include="API\Controller\TasksController.cs" />
+        <Compile Include="API\Model\Task.cs" />
+        <Compile Include="API\Services\ServiceTask.cs" />
         <Compile Include="Database\Main.cs" />
         <Compile Include="Database\Adding.cs" />
         <Compile Include="Database\Deleting.cs" />
@@ -553,14 +565,6 @@
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Tests\BasicTests.cs" />
         <Compile Include="Tests\ErrorTests.cs" />
-        <Compile Include="API\ValuesController.cs" />
-        <Compile Include="API\UserTranslator.cs" />
-        <Compile Include="API\UserDbClient.cs" />
-        <Compile Include="API\UsersController.cs" />
-        <Compile Include="API\SqlHelper.cs" />
-        <Compile Include="API\MySettingsModel.cs" />
-        <Compile Include="API\Message.cs" />
-        <Compile Include="API\DbClientFactory.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="App.config" />
@@ -568,10 +572,6 @@
     </ItemGroup>
     <ItemGroup>
       <Content Include="мучения.txt" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="API" />
-      <Folder Include="Model" />
     </ItemGroup>
     <ItemGroup>
       <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />

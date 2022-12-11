@@ -4,7 +4,7 @@ namespace The_end_of_Gydropon.Database
 {
     public abstract class Main
     {
-        protected const string connString = 
+        public const string connString = 
             "Data Source = 46.39.232.190; Initial Catalog = test;User Id=TestUser; Password=vag!nA228##;";
         
 
