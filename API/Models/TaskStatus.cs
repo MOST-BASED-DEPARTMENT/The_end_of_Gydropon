@@ -9,5 +9,5 @@ public partial class TaskStatus
 
     public string TaskStatusName { get; set; } = null!;
 
-    public virtual ICollection<Task> Tasks { get; } = new List<Task>();
+    public virtual ICollection<Task> TaskList { get; } = new List<Task>();
 }

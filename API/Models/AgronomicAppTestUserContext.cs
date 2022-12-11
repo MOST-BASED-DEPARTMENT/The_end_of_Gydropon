@@ -221,7 +221,7 @@ public partial class AgronomicAppTestUserContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_tasks_field");
 
-            entity.HasOne(d => d.TaskStatus).WithMany(p => p.Tasks)
+            entity.HasOne(d => d.TaskStatus).WithMany(p => p.Task)
                 .HasForeignKey(d => d.TaskStatusId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_tasks_status");
