@@ -9,7 +9,7 @@ namespace The_end_of_Gydropon.Tests
         [Test, Description("Тест на забирание данных с БД")]
         public static void TestSpecificTasks()
         {
-            Ttetgd.add_task_status(1, "dsd");
+            
         }
     }
 }

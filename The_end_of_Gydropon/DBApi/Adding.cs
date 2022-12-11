@@ -146,7 +146,6 @@ namespace The_end_of_Gydropon.DBApi
                     command.Parameters.Add(nameParam);
                     command.Parameters.Add(nameParam2);
                     command.Parameters.Add(nameParam3);
-                    command.ExecuteReader();
                     connection.Close();
                 }
             }

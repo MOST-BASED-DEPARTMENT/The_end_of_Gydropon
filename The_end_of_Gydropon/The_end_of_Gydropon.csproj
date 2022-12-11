@@ -315,6 +315,7 @@
         <Reference Include="WindowsBase" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="DBApi\internet.cs" />
         <Compile Include="DBApi\Main.cs" />
         <Compile Include="DBApi\Adding.cs" />
         <Compile Include="DBApi\Deleting.cs" />

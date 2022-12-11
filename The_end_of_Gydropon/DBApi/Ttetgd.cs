@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using Newtonsoft.Json;
 
 namespace The_end_of_Gydropon.DBApi
 {
@@ -19,10 +20,7 @@ namespace The_end_of_Gydropon.DBApi
                     SqlParameter nameParam2 = new SqlParameter("@task_status_name", value2);
                     command.Parameters.Add(nameParam);
                     command.Parameters.Add(nameParam2);
-                    command.ExecuteReader();
-                    
                     connection.Close();
-                    
                 }
             }
         }

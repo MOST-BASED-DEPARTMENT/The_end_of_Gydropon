@@ -1,5 +1,10 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8eb2ef5c_002Df4da_002D4ce5_002D948f_002D5dad08004a90/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestSpecificTasks" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8eb2ef5c_002Df4da_002D4ce5_002D948f_002D5dad08004a90/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestSpecificTasks" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::672F3A95-3344-415A-AECA-699E7130C1B0::.NETFramework,Version=v4.8::The_end_of_Gydropon.Tests.BasicTests.TestSpecificTasks&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9867fa5f_002Db4d7_002D4dcc_002D96b0_002Dee010f4fa00f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestSpecificTasks #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::672F3A95-3344-415A-AECA-699E7130C1B0::.NETFramework,Version=v4.8::The_end_of_Gydropon.Tests.BasicTests.TestSpecificTasks&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
