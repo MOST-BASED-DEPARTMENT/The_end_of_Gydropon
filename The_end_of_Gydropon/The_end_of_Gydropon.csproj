@@ -318,6 +318,7 @@
         <Compile Include="DBApi\Main.cs" />
         <Compile Include="DBApi\Adding.cs" />
         <Compile Include="DBApi\Deleting.cs" />
+        <Compile Include="DBApi\Ttetgd.cs" />
         <Compile Include="DBApi\Updating.cs" />
         <Compile Include="ErrorMessages\BaseErrors.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
@@ -332,6 +333,7 @@
       <Content Include="мучения.txt" />
     </ItemGroup>
     <ItemGroup>
+      <Folder Include="Controllers" />
       <Folder Include="Model" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

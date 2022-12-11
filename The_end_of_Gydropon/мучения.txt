@@ -34,6 +34,10 @@ api/{object}/{method}/{values}
 
 ----------------------------------------
 
+
+
+----------------------------------------
+
 Под каждую таблицу должен быть метод add_название таблицы с аргументами под каждое поле кроме id таблицы
 
 Под каждый метод должен быть ещё один метод с тем же названием, только вместо add - edit и к существующим аргументам первый - id
@@ -64,4 +68,4 @@ add_chemical_type(chemical_type_name: string)
 
 add_agricultural_machinery(agricultural_machinery_name: string, agricultural_machinery_type_id: int, task_type_id: int)
 
-add_agricultural_machinery_type(agricultural_machinery_type_name: string)
+2(agricultural_machinery_type_name: string)

@@ -8,7 +8,7 @@ namespace The_end_of_Gydropon.DBApi
             "Data Source = 46.39.232.190; Initial Catalog = test;User Id=TestUser; Password=vag!nA228##;";
         
 
-        private Dictionary<string, string> procedureStuff = new Dictionary<string, string>
+        public Dictionary<string, string> procedureStuff = new Dictionary<string, string>
         {
             {"add_task", "SELECT * ZAEBIS"},
             {"add_task_status", "SELECT * ZAEBIS"},
@@ -19,22 +19,11 @@ namespace The_end_of_Gydropon.DBApi
             {"add_plant", "SELECT * ZAEBIS"},
             {"add_plant_status", "SELECT * ZAEBIS"},
             {"add_chemical", "SELECT * ZAEBIS"},
-            {"add_chemical", "SELECT * ZAEBIS"},
+            
             {"add_agricultural_machinery", "SELECT * ZAEBIS"},
             {"add_agricultural_machinery_type", "SELECT * ZAEBIS"}
         };
-        
-        public virtual void Add()
-        {
-        }
-        
-        public virtual void Delete()
-        {
-        }
-        
-        public virtual void Update()
-        {
-        }
+
         
         public string TableName { get; set; }
     }

@@ -17,7 +17,7 @@ namespace The_end_of_Gydropon.Tests
         [Test, Description("Тест на забирание данных с БД")]
         public static void TestSpecificTasks()
         {
-            Assert.AreEqual(Taking.RunProcedure("add_task"), "бурундук");
+            Adding.add_task_status(1, "1");
         }
     }
 }
