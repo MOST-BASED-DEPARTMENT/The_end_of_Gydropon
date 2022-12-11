@@ -6,18 +6,10 @@ namespace The_end_of_Gydropon.Tests
     [TestFixture]
     public class BasicTests
     {
-        private static string _connectionString = null;
-
-        private protected static string ConnectionString
-        {
-            get => _connectionString;
-            set => _connectionString = value;
-        }
-
         [Test, Description("Тест на забирание данных с БД")]
         public static void TestSpecificTasks()
         {
-            Adding.add_task_status(1, "1");
+            Ttetgd.add_task_status(1, "dsd");
         }
     }
 }

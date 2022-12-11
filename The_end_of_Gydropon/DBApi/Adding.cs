@@ -44,7 +44,7 @@ namespace The_end_of_Gydropon.DBApi
         public void add_task_status(int id, string id2)
         {
             string sqlExpression =
-                $"INSERT INTO [task_statuse] (task_statuse_id, task_status_name) VALUES({id}, '{id2}');";
+                $"INSERT INTO [task_status] (task_statuse_id, task_status_name) VALUES({id}, '{id2}');";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 using (command = new SqlCommand(sqlExpression, connection))

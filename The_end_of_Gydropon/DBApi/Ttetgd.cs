@@ -5,11 +5,11 @@ namespace The_end_of_Gydropon.DBApi
     public class Ttetgd : Main
     {
         private static string data = null;
-        public static void add_task_status(int value1, int value2)
+        public static void add_task_status(int value1, string value2)
         {
             SqlCommand command;            
             string sqlExpression =
-                $"INSERT INTO [task_statuse] (task_statuse_id, task_status_name) VALUES({value1}, {value2});";
+                $"INSERT INTO [task_statuses] (task_statuse_id, task_status_name) VALUES({value1}, '{value2}');";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 using (command = new SqlCommand(sqlExpression, connection))
