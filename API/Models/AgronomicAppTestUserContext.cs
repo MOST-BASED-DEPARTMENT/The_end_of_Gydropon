@@ -31,11 +31,11 @@ public partial class AgronomicAppTestUserContext : DbContext
 
     public virtual DbSet<Post> Posts { get; set; }
 
-    public virtual DbSet<Task> Tasks { get; set; }
+    public virtual DbSet<Ttask> Ttasks { get; set; }
 
-    public virtual DbSet<TaskStatus> TaskStatuses { get; set; }
+    public virtual DbSet<TtaskStatus> TtaskStatuses { get; set; }
 
-    public virtual DbSet<TaskType> TaskTypes { get; set; }
+    public virtual DbSet<TtaskType> TtaskTypes { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
@@ -70,7 +70,7 @@ public partial class AgronomicAppTestUserContext : DbContext
 
             entity.ToTable("agricultural_machinery_types");
 
-            entity.HasIndex(e => e.AgriculturalMachineryTypeName, "UQ__agricult__A66F73A641E5A270").IsUnique();
+            entity.HasIndex(e => e.AgriculturalMachineryTypeName, "UQ__agricult__A66F73A607F4B53C").IsUnique();
 
             entity.Property(e => e.IdAgriculturalMachineryType).HasColumnName("id_agricultural_machinery_type");
             entity.Property(e => e.AgriculturalMachineryTypeName)
@@ -85,7 +85,7 @@ public partial class AgronomicAppTestUserContext : DbContext
 
             entity.ToTable("chemicals");
 
-            entity.HasIndex(e => e.ChemicalName, "UQ__chemical__EFFEEF09339D0D6D").IsUnique();
+            entity.HasIndex(e => e.ChemicalName, "UQ__chemical__EFFEEF09B5BBEA66").IsUnique();
 
             entity.Property(e => e.IdChemical).HasColumnName("id_chemical");
             entity.Property(e => e.ChemicalName)
@@ -106,7 +106,7 @@ public partial class AgronomicAppTestUserContext : DbContext
 
             entity.ToTable("chemicals_types");
 
-            entity.HasIndex(e => e.ChemicalTypeName, "UQ__chemical__8FB55F3D90BC73A9").IsUnique();
+            entity.HasIndex(e => e.ChemicalTypeName, "UQ__chemical__8FB55F3DF8545876").IsUnique();
 
             entity.Property(e => e.IdChemicalType).HasColumnName("id_chemical_type");
             entity.Property(e => e.ChemicalTypeName)
@@ -121,7 +121,7 @@ public partial class AgronomicAppTestUserContext : DbContext
 
             entity.ToTable("fields");
 
-            entity.HasIndex(e => e.FieldIdentifier, "UQ__fields__BE0BB637C374E49C").IsUnique();
+            entity.HasIndex(e => e.FieldIdentifier, "UQ__fields__BE0BB63723A4FDD0").IsUnique();
 
             entity.Property(e => e.IdField).HasColumnName("id_field");
             entity.Property(e => e.FieldArea).HasColumnName("field_area");
@@ -143,7 +143,7 @@ public partial class AgronomicAppTestUserContext : DbContext
 
             entity.ToTable("plants");
 
-            entity.HasIndex(e => e.PlantName, "UQ__plants__2D64245385B5C3D6").IsUnique();
+            entity.HasIndex(e => e.PlantName, "UQ__plants__2D642453033F0DA6").IsUnique();
 
             entity.Property(e => e.IdPlant).HasColumnName("id_plant");
             entity.Property(e => e.PlantName)
@@ -164,7 +164,7 @@ public partial class AgronomicAppTestUserContext : DbContext
 
             entity.ToTable("plants_types");
 
-            entity.HasIndex(e => e.PlantTypeName, "UQ__plants_t__76F6DBD2A505DCBB").IsUnique();
+            entity.HasIndex(e => e.PlantTypeName, "UQ__plants_t__76F6DBD2BB307452").IsUnique();
 
             entity.Property(e => e.IdPlantType).HasColumnName("id_plant_type");
             entity.Property(e => e.PlantTypeName)
@@ -179,7 +179,7 @@ public partial class AgronomicAppTestUserContext : DbContext
 
             entity.ToTable("post");
 
-            entity.HasIndex(e => e.PostName, "UQ__post__7487D7969BC23D11").IsUnique();
+            entity.HasIndex(e => e.PostName, "UQ__post__7487D796ACAB5998").IsUnique();
 
             entity.Property(e => e.IdPost).HasColumnName("id_post");
             entity.Property(e => e.PostName)
@@ -189,95 +189,95 @@ public partial class AgronomicAppTestUserContext : DbContext
             entity.Property(e => e.SuperiorPostId).HasColumnName("superior_post_id");
         });
 
-        modelBuilder.Entity<Task>(entity =>
+        modelBuilder.Entity<Ttask>(entity =>
         {
-            entity.HasKey(e => e.IdTask);
+            entity.HasKey(e => e.IdTtask);
 
-            entity.ToTable("tasks");
+            entity.ToTable("ttasks");
 
-            entity.Property(e => e.IdTask).HasColumnName("id_task");
-            entity.Property(e => e.TaskDate)
+            entity.Property(e => e.IdTtask).HasColumnName("id_ttask");
+            entity.Property(e => e.TtaskDate)
                 .HasColumnType("date")
-                .HasColumnName("task_date");
-            entity.Property(e => e.TaskDescription)
+                .HasColumnName("ttask_date");
+            entity.Property(e => e.TtaskDescription)
                 .IsUnicode(false)
-                .HasColumnName("task_description");
-            entity.Property(e => e.TaskExecutorId).HasColumnName("task_executor_id");
-            entity.Property(e => e.TaskFieldId).HasColumnName("task_field_id");
-            entity.Property(e => e.TaskFinishingTime).HasColumnName("task_finishing_time");
-            entity.Property(e => e.TaskStartTime).HasColumnName("task_start_time");
-            entity.Property(e => e.TaskStatusId).HasColumnName("task_status_id");
-            entity.Property(e => e.TaskTypeId).HasColumnName("task_type_id");
-            entity.Property(e => e.TaskWeatherInfo)
+                .HasColumnName("ttask_description");
+            entity.Property(e => e.TtaskExecutorId).HasColumnName("ttask_executor_id");
+            entity.Property(e => e.TtaskFieldId).HasColumnName("ttask_field_id");
+            entity.Property(e => e.TtaskFinishingTime).HasColumnName("ttask_finishing_time");
+            entity.Property(e => e.TtaskStartTime).HasColumnName("ttask_start_time");
+            entity.Property(e => e.TtaskStatusId).HasColumnName("ttask_status_id");
+            entity.Property(e => e.TtaskTypeId).HasColumnName("ttask_type_id");
+            entity.Property(e => e.TtaskWeatherInfo)
                 .IsUnicode(false)
-                .HasColumnName("task_weather_info");
+                .HasColumnName("ttask_weather_info");
 
-            entity.HasOne(d => d.TaskExecutor).WithMany(p => p.Tasks)
-                .HasForeignKey(d => d.TaskExecutorId)
-                .HasConstraintName("FK_tasks_executor");
+            entity.HasOne(d => d.TtaskExecutor).WithMany(p => p.Ttasks)
+                .HasForeignKey(d => d.TtaskExecutorId)
+                .HasConstraintName("FK_ttasks_executor");
 
-            entity.HasOne(d => d.TaskField).WithMany(p => p.Tasks)
-                .HasForeignKey(d => d.TaskFieldId)
+            entity.HasOne(d => d.TtaskField).WithMany(p => p.Ttasks)
+                .HasForeignKey(d => d.TtaskFieldId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_tasks_field");
+                .HasConstraintName("FK_ttasks_field");
 
-            entity.HasOne(d => d.TaskStatus).WithMany(p => p.Task)
-                .HasForeignKey(d => d.TaskStatusId)
+            entity.HasOne(d => d.TtaskStatus).WithMany(p => p.Ttasks)
+                .HasForeignKey(d => d.TtaskStatusId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_tasks_status");
+                .HasConstraintName("FK_ttasks_status");
 
-            entity.HasOne(d => d.TaskType).WithMany(p => p.Tasks)
-                .HasForeignKey(d => d.TaskTypeId)
+            entity.HasOne(d => d.TtaskType).WithMany(p => p.Ttasks)
+                .HasForeignKey(d => d.TtaskTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_tasks_type");
+                .HasConstraintName("FK_ttasks_type");
         });
 
-        modelBuilder.Entity<TaskStatus>(entity =>
+        modelBuilder.Entity<TtaskStatus>(entity =>
         {
-            entity.HasKey(e => e.IdTaskStatus);
+            entity.HasKey(e => e.IdTtaskStatus);
 
-            entity.ToTable("task_statuses");
+            entity.ToTable("ttask_statuses");
 
-            entity.HasIndex(e => e.TaskStatusName, "UQ__task_sta__8406F8F92F7DD618").IsUnique();
+            entity.HasIndex(e => e.TtaskStatusName, "UQ__ttask_st__A11F8A00DA93E2D3").IsUnique();
 
-            entity.Property(e => e.IdTaskStatus).HasColumnName("id_task_status");
-            entity.Property(e => e.TaskStatusName)
+            entity.Property(e => e.IdTtaskStatus).HasColumnName("id_ttask_status");
+            entity.Property(e => e.TtaskStatusName)
                 .HasMaxLength(200)
                 .IsUnicode(false)
-                .HasColumnName("task_status_name");
+                .HasColumnName("ttask_status_name");
         });
 
-        modelBuilder.Entity<TaskType>(entity =>
+        modelBuilder.Entity<TtaskType>(entity =>
         {
-            entity.HasKey(e => e.IdTaskType);
+            entity.HasKey(e => e.IdTtaskType);
 
-            entity.ToTable("task_types");
+            entity.ToTable("ttask_types");
 
-            entity.HasIndex(e => e.TaskTypeName, "UQ__task_typ__AB83C8EBBBBC90FC").IsUnique();
+            entity.HasIndex(e => e.TtaskTypeName, "UQ__ttask_ty__93E733226B7080E7").IsUnique();
 
-            entity.Property(e => e.IdTaskType).HasColumnName("id_task_type");
+            entity.Property(e => e.IdTtaskType).HasColumnName("id_ttask_type");
             entity.Property(e => e.AgriculturalMachineryId).HasColumnName("agricultural_machinery_id");
             entity.Property(e => e.ChemicalAmount).HasColumnName("chemical_amount");
             entity.Property(e => e.ChemicalId).HasColumnName("chemical_id");
             entity.Property(e => e.SuperiorTypeId).HasColumnName("superior_type_id");
-            entity.Property(e => e.TaskTypeName)
+            entity.Property(e => e.TtaskTypeName)
                 .HasMaxLength(100)
                 .IsUnicode(false)
-                .HasColumnName("task_type_name");
+                .HasColumnName("ttask_type_name");
 
-            entity.HasOne(d => d.AgriculturalMachinery).WithMany(p => p.TaskTypes)
+            entity.HasOne(d => d.AgriculturalMachinery).WithMany(p => p.TtaskTypes)
                 .HasForeignKey(d => d.AgriculturalMachineryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_task_types_agricultural_machinery");
+                .HasConstraintName("FK_ttask_types_agricultural_machinery");
 
-            entity.HasOne(d => d.Chemical).WithMany(p => p.TaskTypes)
+            entity.HasOne(d => d.Chemical).WithMany(p => p.TtaskTypes)
                 .HasForeignKey(d => d.ChemicalId)
-                .HasConstraintName("FK_task_types_chemical");
+                .HasConstraintName("FK_ttask_types_chemical");
 
             entity.HasOne(d => d.SuperiorType).WithMany(p => p.InverseSuperiorType)
                 .HasForeignKey(d => d.SuperiorTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_task_types_superior");
+                .HasConstraintName("FK_ttask_types_superior");
         });
 
         modelBuilder.Entity<User>(entity =>
@@ -286,7 +286,7 @@ public partial class AgronomicAppTestUserContext : DbContext
 
             entity.ToTable("users");
 
-            entity.HasIndex(e => e.UserLogin, "UQ__users__9EA1B5AF97CA1675").IsUnique();
+            entity.HasIndex(e => e.UserLogin, "UQ__users__9EA1B5AF7999888D").IsUnique();
 
             entity.Property(e => e.IdUser).HasColumnName("id_user");
             entity.Property(e => e.UserFirstName)

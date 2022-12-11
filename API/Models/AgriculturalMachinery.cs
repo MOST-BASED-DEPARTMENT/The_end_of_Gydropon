@@ -13,5 +13,5 @@ public partial class AgriculturalMachinery
 
     public virtual AgriculturalMachineryType AgriculturalMachineryType { get; set; } = null!;
 
-    public virtual ICollection<TaskType> TaskTypes { get; } = new List<TaskType>();
+    public virtual ICollection<TtaskType> TtaskTypes { get; } = new List<TtaskType>();
 }

@@ -19,7 +19,7 @@ public partial class User
 
     public string UserPassword { get; set; } = null!;
 
-    public virtual ICollection<Task> Tasks { get; } = new List<Task>();
+    public virtual ICollection<Ttask> Ttasks { get; } = new List<Ttask>();
 
     public virtual Post UserPost { get; set; } = null!;
 }

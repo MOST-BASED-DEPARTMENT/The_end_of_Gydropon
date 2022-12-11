@@ -15,5 +15,5 @@ public partial class Field
 
     public virtual Plant FieldPlant { get; set; } = null!;
 
-    public virtual ICollection<Task> Tasks { get; } = new List<Task>();
+    public virtual ICollection<Ttask> Ttasks { get; } = new List<Ttask>();
 }
