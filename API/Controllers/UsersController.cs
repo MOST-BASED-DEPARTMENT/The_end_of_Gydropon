@@ -68,10 +68,14 @@ namespace API.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<User>> PostUser()
         {
-            _context.Users.Add(user);
+            var user = new User();
+            _context.Attach(user);
+            _context.Entry(user).State = EntityState.Added;
             await _context.SaveChangesAsync();
+
+            _context.Users.Add(user);
 
             return CreatedAtAction("GetUser", new { id = user.IdUser }, user);
         }
