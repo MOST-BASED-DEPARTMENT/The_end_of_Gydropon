@@ -1,7 +1,5 @@
-﻿using System;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.Globalization;
-using System.Text.Json;
 
 namespace The_end_of_Gydropon.DBApi
 {
@@ -13,7 +11,7 @@ namespace The_end_of_Gydropon.DBApi
         public void add_task(int id, int id2, int id3, int id4, int id5, CultureInfo id6, CultureInfo id7, CultureInfo id8, string id9)
         {
             string sqlExpression =
-                $"INSERT INTO [tasks] (task_id, task_execution_id, task_field_id, task_type_id, task_status_id, task_date, task_start_time, task_finishing_time, task_description) VALUES({id}, {id2}, {id3}, {id4}, {id5}, {id6}, {id7}, {id8}, {id9});";
+                $"INSERT INTO [tasks] (task_id, task_execution_id, task_field_id, task_type_id, task_status_id, task_date, task_start_time, task_finishing_time, task_description) VALUES({id}, {id2}, {id3}, {id4}, {id5}, '{id6}', '{id7}', '{id8}', {id9});";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 using (command = new SqlCommand(sqlExpression, connection))
@@ -43,17 +41,17 @@ namespace The_end_of_Gydropon.DBApi
             }
         }
 
-        public void add_task_status(int value1, string value2)
+        public void add_task_status(int id, string id2)
         {
             string sqlExpression =
-                $"INSERT INTO [task_statuse] (task_statuse_id, task_status_name) VALUES({value1}, {value2});";
+                $"INSERT INTO [task_statuse] (task_statuse_id, task_status_name) VALUES({id}, '{id2}');";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 using (command = new SqlCommand(sqlExpression, connection))
                 {
                     connection.Open();
-                    SqlParameter nameParam = new SqlParameter("@task_statuse_id", value1);
-                    SqlParameter nameParam2 = new SqlParameter("@task_status_name", value2);
+                    SqlParameter nameParam = new SqlParameter("@task_statuse_id", id);
+                    SqlParameter nameParam2 = new SqlParameter("@task_status_name", id2);
                     command.Parameters.Add(nameParam);
                     command.Parameters.Add(nameParam2);
                     command.ExecuteReader();
@@ -65,7 +63,7 @@ namespace The_end_of_Gydropon.DBApi
         public void add_task_type(int id, string id2, int id3, int id4, int id5)
         {
             string sqlExpression =
-                $"INSERT INTO task_type (task_type_id, task_type_name, superior_type_id, chemical_id, agricultural_machinery_id) VALUES({id}, {id2}, {id3}, {id4}, {id5});";
+                $"INSERT INTO task_type (task_type_id, task_type_name, superior_type_id, chemical_id, agricultural_machinery_id) VALUES({id}, '{id2}', {id3}, {id4}, {id5});";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 using (command = new SqlCommand(sqlExpression, connection))
@@ -90,7 +88,7 @@ namespace The_end_of_Gydropon.DBApi
         public void add_field(int id, int id2, string id3, int id4)
         {
             string sqlExpression =
-                $"INSERT INTO fields (field_id, field_area, field_identifier, fiend_plant_id) VALUES({id}, {id2}, {id3}, {id4});";
+                $"INSERT INTO fields (field_id, field_area, field_identifier, fiend_plant_id) VALUES({id}, {id2}, '{id3}', {id4});";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 using (command = new SqlCommand(sqlExpression, connection))
@@ -113,7 +111,7 @@ namespace The_end_of_Gydropon.DBApi
         public void add_user(int id, int id2, string id3, string id4)
         {
             string sqlExpression =
-                $"INSERT INTO users (user_id, user_post_id, user_login, user_password) VALUES({id}, {id2}, {id3}, {id4});";
+                $"INSERT INTO users (user_id, user_post_id, user_login, user_password) VALUES({id}, {id2}, '{id3}', '{id4}');";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 using (command = new SqlCommand(sqlExpression, connection))
@@ -136,7 +134,7 @@ namespace The_end_of_Gydropon.DBApi
         public void add_post(int id, string id2, int id3)
         {
             string sqlExpression =
-                $"INSERT INTO post (post_id, post_name, superior_post_id) VALUES({id}, {id2}, {id3});";
+                $"INSERT INTO post (post_id, post_name, superior_post_id) VALUES({id}, '{id2}', {id3});";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 using (command = new SqlCommand(sqlExpression, connection))
@@ -155,18 +153,18 @@ namespace The_end_of_Gydropon.DBApi
             
         }
 
-        public void add_plant()
+        public void add_plant(int id, string id2, int id3)
         {
             string sqlExpression =
-                $"INSERT INTO tasks (task_id, task_execution_id, task_field_id, task_type_id, task_status_id, task_date, task_start_time, task_finishing_time, task_description) VALUES(@task_id, @task_execution_id, @task_field_id, @task_type_id, @task_status_id, @task_date, @task_start_time, @task_finishing_time, @task_description);";
+                $"INSERT INTO plants (id_plant, plant_name, plant_type_id) VALUES({id}, '{id2}', {id3});";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 using (command = new SqlCommand(sqlExpression, connection))
                 {
                     connection.Open();
-                    SqlParameter nameParam = new SqlParameter("@task_id", task_id);
-                    SqlParameter nameParam2 = new SqlParameter("@task_execution_id", task_execution_id);
-                    SqlParameter nameParam3 = new SqlParameter("@task_field_id", task_field_id);
+                    SqlParameter nameParam = new SqlParameter("@id_plan", id);
+                    SqlParameter nameParam2 = new SqlParameter("@plant_name", id2);
+                    SqlParameter nameParam3 = new SqlParameter("@plant_type_id", id3);
                     command.Parameters.Add(nameParam);
                     command.Parameters.Add(nameParam2);
                     command.Parameters.Add(nameParam3);
@@ -176,17 +174,17 @@ namespace The_end_of_Gydropon.DBApi
             }
         }
 
-        public void add_plant_status()
+        public void add_plant_status(int id, string id2)
         {
             string sqlExpression =
-                $"INSERT INTO tasks (task_id, task_execution_id, task_field_id, task_type_id, task_status_id, task_date, task_start_time, task_finishing_time, task_description) VALUES(@task_id, @task_execution_id, @task_field_id, @task_type_id, @task_status_id, @task_date, @task_start_time, @task_finishing_time, @task_description);";
+                $"INSERT INTO plants_types (id_plant_type, plant_type_name) VALUES({id}, '{id2}');";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 using (command = new SqlCommand(sqlExpression, connection))
                 {
                     connection.Open();
-                    SqlParameter nameParam = new SqlParameter("@task_id", task_id);
-                    SqlParameter nameParam2 = new SqlParameter("@task_execution_id", task_execution_id);
+                    SqlParameter nameParam = new SqlParameter("@id_plant_type", id);
+                    SqlParameter nameParam2 = new SqlParameter("@plant_type_name", id);
                     command.Parameters.Add(nameParam);
                     command.Parameters.Add(nameParam2);
                     command.ExecuteReader();
@@ -195,18 +193,18 @@ namespace The_end_of_Gydropon.DBApi
             }
         }
 
-        public void add_chemical()
+        public void add_chemical(int id, string id2, int id3)
         {
             string sqlExpression =
-                $"INSERT INTO tasks (task_id, task_execution_id, task_field_id, task_type_id, task_status_id, task_date, task_start_time, task_finishing_time, task_description) VALUES(@task_id, @task_execution_id, @task_field_id, @task_type_id, @task_status_id, @task_date, @task_start_time, @task_finishing_time, @task_description);";
+                $"INSERT INTO chemicals (id_chemical, chemical_name, chemical_type_id) VALUES({id}, '{id2}', {id3});";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 using (command = new SqlCommand(sqlExpression, connection))
                 {
                     connection.Open();
-                    SqlParameter nameParam = new SqlParameter("@task_id", task_id);
-                    SqlParameter nameParam2 = new SqlParameter("@task_execution_id", task_execution_id);
-                    SqlParameter nameParam3 = new SqlParameter("@task_field_id", task_field_id);
+                    SqlParameter nameParam = new SqlParameter("@id_chemical", id);
+                    SqlParameter nameParam2 = new SqlParameter("@chemical_name", id2);
+                    SqlParameter nameParam3 = new SqlParameter("@chemical_type_id", id3);
                     command.Parameters.Add(nameParam);
                     command.Parameters.Add(nameParam2);
                     command.Parameters.Add(nameParam3);
@@ -216,17 +214,17 @@ namespace The_end_of_Gydropon.DBApi
             }
         }
 
-        public void add_chemical_type()
+        public void add_chemical_type(int id, string id2)
         {
             string sqlExpression =
-                $"INSERT INTO tasks (task_id, task_execution_id, task_field_id, task_type_id, task_status_id, task_date, task_start_time, task_finishing_time, task_description) VALUES(@task_id, @task_execution_id, @task_field_id, @task_type_id, @task_status_id, @task_date, @task_start_time, @task_finishing_time, @task_description);";
+                $"INSERT INTO chemicals_type (chemical_type_id, chemical_type_name) VALUES({id}, '{id2}');";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 using (command = new SqlCommand(sqlExpression, connection))
                 {
                     connection.Open();
-                    SqlParameter nameParam = new SqlParameter("@task_id", task_id);
-                    SqlParameter nameParam2 = new SqlParameter("@task_execution_id", task_execution_id);
+                    SqlParameter nameParam = new SqlParameter("@chemical_type_id", id);
+                    SqlParameter nameParam2 = new SqlParameter("@chemical_type_name", id2);
                     command.Parameters.Add(nameParam);
                     command.Parameters.Add(nameParam2);
                     command.ExecuteReader();
@@ -235,18 +233,18 @@ namespace The_end_of_Gydropon.DBApi
             }
         }
 
-        public void add_agricultural_machinery()
+        public void add_agricultural_machinery(int id,string id2, int id3)
         {
             string sqlExpression =
-                $"INSERT INTO tasks (task_id, task_execution_id, task_field_id, task_type_id, task_status_id, task_date, task_start_time, task_finishing_time, task_description) VALUES(@task_id, @task_execution_id, @task_field_id, @task_type_id, @task_status_id, @task_date, @task_start_time, @task_finishing_time, @task_description);";
+                $"INSERT INTO agricultural_machinery (id_agricultural_machinery, agricultural_machinery_name, agricultural_machinery_type_id) VALUES({id}, '{id2}', {id3});";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 using (command = new SqlCommand(sqlExpression, connection))
                 {
                     connection.Open();
-                    SqlParameter nameParam = new SqlParameter("@task_id", task_id);
-                    SqlParameter nameParam2 = new SqlParameter("@task_execution_id", task_execution_id);
-                    SqlParameter nameParam3 = new SqlParameter("@task_field_id", task_field_id);
+                    SqlParameter nameParam = new SqlParameter("@id_agricultural_machinery", id);
+                    SqlParameter nameParam2 = new SqlParameter("@agricultural_machinery_name", id2);
+                    SqlParameter nameParam3 = new SqlParameter("@agricultural_machinery_type_id", id3);
                     command.Parameters.Add(nameParam);
                     command.Parameters.Add(nameParam2);
                     command.Parameters.Add(nameParam3);
@@ -256,17 +254,17 @@ namespace The_end_of_Gydropon.DBApi
             }
         }
         
-        public void add_agricultural_machinery_type()
+        public void add_agricultural_machinery_type(int id, string id2)
         {
             string sqlExpression =
-                $"INSERT INTO tasks (task_id, task_execution_id, task_field_id, task_type_id, task_status_id, task_date, task_start_time, task_finishing_time, task_description) VALUES(@task_id, @task_execution_id, @task_field_id, @task_type_id, @task_status_id, @task_date, @task_start_time, @task_finishing_time, @task_description);";
+                $"INSERT INTO agricultural_machinery_types (id_agricultural_machinery_type, agricultural_machinery_type_name) VALUES({id}, '{id2}');";
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 using (command = new SqlCommand(sqlExpression, connection))
                 {
                     connection.Open();
-                    SqlParameter nameParam = new SqlParameter("@task_id", task_id);
-                    SqlParameter nameParam2 = new SqlParameter("@task_execution_id", task_execution_id);
+                    SqlParameter nameParam = new SqlParameter("@task_id", id);
+                    SqlParameter nameParam2 = new SqlParameter("@task_execution_id", id2);
                     command.Parameters.Add(nameParam);
                     command.Parameters.Add(nameParam2);
                     command.ExecuteReader();
