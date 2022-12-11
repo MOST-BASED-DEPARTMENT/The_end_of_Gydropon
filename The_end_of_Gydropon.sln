@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "The_end_of_Gydropon", "The_end_of_Gydropon\The_end_of_Gydropon.csproj", "{672F3A95-3344-415A-AECA-699E7130C1B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{E26998CC-09B9-4B01-BEF7-0673E4DE97EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +8,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{672F3A95-3344-415A-AECA-699E7130C1B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{672F3A95-3344-415A-AECA-699E7130C1B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{672F3A95-3344-415A-AECA-699E7130C1B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{672F3A95-3344-415A-AECA-699E7130C1B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E26998CC-09B9-4B01-BEF7-0673E4DE97EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E26998CC-09B9-4B01-BEF7-0673E4DE97EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E26998CC-09B9-4B01-BEF7-0673E4DE97EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E26998CC-09B9-4B01-BEF7-0673E4DE97EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
