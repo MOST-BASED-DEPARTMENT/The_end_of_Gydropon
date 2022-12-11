@@ -77,7 +77,7 @@ namespace The_end_of_Gydropon.API
 
         public static bool GetBoolean(SqlDataReader reader, string colName)
         {
-            return reader.IsDBNull(reader.GetOrdinal(colName)) ? default(bool) : Convert.ToBoolean(reader[colName]);
+            return !reader.IsDBNull(reader.GetOrdinal(colName)) && Convert.ToBoolean(reader[colName]);
         }
 
         //this method is to check wheater column exists or not in data reader
@@ -85,7 +85,7 @@ namespace The_end_of_Gydropon.API
         {
             try
             {
-                return (dr.GetOrdinal(colName) >= 0);
+                return dr.GetOrdinal(colName) >= 0;
             }
             catch (Exception)
             {
