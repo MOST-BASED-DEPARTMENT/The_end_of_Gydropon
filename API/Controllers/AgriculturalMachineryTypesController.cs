@@ -2,95 +2,94 @@
 using Microsoft.EntityFrameworkCore;
 using API.Models;
 
-namespace API.Controllers
+namespace API.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class AgriculturalMachineryTypesController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AgriculturalMachineryTypesController : ControllerBase
+    private readonly AgronomicAppTestUserContext _context = new();
+
+
+    // GET: api/AgriculturalMachineryTypes
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<AgriculturalMachineryType>>> GetAgriculturalMachineryTypes()
     {
-        private readonly AgronomicAppTestUserContext _context = new();
+        return await _context.AgriculturalMachineryTypes.ToListAsync();
+    }
 
+    // GET: api/AgriculturalMachineryTypes/5
+    [HttpGet("{id}")]
+    public async Task<ActionResult<AgriculturalMachineryType>> GetAgriculturalMachineryType(int id)
+    {
+        var agriculturalMachineryType = await _context.AgriculturalMachineryTypes.FindAsync(id);
 
-        // GET: api/AgriculturalMachineryTypes
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<AgriculturalMachineryType>>> GetAgriculturalMachineryTypes()
+        if (agriculturalMachineryType == null)
         {
-            return await _context.AgriculturalMachineryTypes.ToListAsync();
+            return NotFound();
         }
 
-        // GET: api/AgriculturalMachineryTypes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AgriculturalMachineryType>> GetAgriculturalMachineryType(int id)
-        {
-            var agriculturalMachineryType = await _context.AgriculturalMachineryTypes.FindAsync(id);
+        return agriculturalMachineryType;
+    }
 
-            if (agriculturalMachineryType == null)
+    // PUT: api/AgriculturalMachineryTypes/5
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutAgriculturalMachineryType(int id, AgriculturalMachineryType agriculturalMachineryType)
+    {
+        if (id != agriculturalMachineryType.IdAgriculturalMachineryType)
+        {
+            return BadRequest();
+        }
+
+        _context.Entry(agriculturalMachineryType).State = EntityState.Modified;
+
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!AgriculturalMachineryTypeExists(id))
             {
                 return NotFound();
             }
 
-            return agriculturalMachineryType;
+            throw;
         }
 
-        // PUT: api/AgriculturalMachineryTypes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAgriculturalMachineryType(int id, AgriculturalMachineryType agriculturalMachineryType)
+        return NoContent();
+    }
+
+    // POST: api/AgriculturalMachineryTypes
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [HttpPost]
+    public async Task<ActionResult<AgriculturalMachineryType>> PostAgriculturalMachineryType(AgriculturalMachineryType agriculturalMachineryType)
+    {
+        _context.AgriculturalMachineryTypes.Add(agriculturalMachineryType);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction("GetAgriculturalMachineryType", new { id = agriculturalMachineryType.IdAgriculturalMachineryType }, agriculturalMachineryType);
+    }
+
+    // DELETE: api/AgriculturalMachineryTypes/5
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAgriculturalMachineryType(int id)
+    {
+        var agriculturalMachineryType = await _context.AgriculturalMachineryTypes.FindAsync(id);
+        if (agriculturalMachineryType == null)
         {
-            if (id != agriculturalMachineryType.IdAgriculturalMachineryType)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(agriculturalMachineryType).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AgriculturalMachineryTypeExists(id))
-                {
-                    return NotFound();
-                }
-
-                throw;
-            }
-
-            return NoContent();
+            return NotFound();
         }
 
-        // POST: api/AgriculturalMachineryTypes
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<AgriculturalMachineryType>> PostAgriculturalMachineryType(AgriculturalMachineryType agriculturalMachineryType)
-        {
-            _context.AgriculturalMachineryTypes.Add(agriculturalMachineryType);
-            await _context.SaveChangesAsync();
+        _context.AgriculturalMachineryTypes.Remove(agriculturalMachineryType);
+        await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAgriculturalMachineryType", new { id = agriculturalMachineryType.IdAgriculturalMachineryType }, agriculturalMachineryType);
-        }
+        return NoContent();
+    }
 
-        // DELETE: api/AgriculturalMachineryTypes/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAgriculturalMachineryType(int id)
-        {
-            var agriculturalMachineryType = await _context.AgriculturalMachineryTypes.FindAsync(id);
-            if (agriculturalMachineryType == null)
-            {
-                return NotFound();
-            }
-
-            _context.AgriculturalMachineryTypes.Remove(agriculturalMachineryType);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool AgriculturalMachineryTypeExists(int id)
-        {
-            return _context.AgriculturalMachineryTypes.Any(e => e.IdAgriculturalMachineryType == id);
-        }
+    private bool AgriculturalMachineryTypeExists(int id)
+    {
+        return _context.AgriculturalMachineryTypes.Any(e => e.IdAgriculturalMachineryType == id);
     }
 }

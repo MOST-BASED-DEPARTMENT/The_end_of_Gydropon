@@ -2,94 +2,93 @@
 using Microsoft.EntityFrameworkCore;
 using API.Models;
 
-namespace API.Controllers
+namespace API.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class FieldsController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class FieldsController : ControllerBase
+    private readonly AgronomicAppTestUserContext _context = new();
+
+    // GET: api/Fields
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Field>>> GetFields()
     {
-        private readonly AgronomicAppTestUserContext _context = new();
+        return await _context.Fields.ToListAsync();
+    }
 
-        // GET: api/Fields
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Field>>> GetFields()
+    // GET: api/Fields/5
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Field>> GetField(int id)
+    {
+        var @field = await _context.Fields.FindAsync(id);
+
+        if (@field == null)
         {
-            return await _context.Fields.ToListAsync();
+            return NotFound();
         }
 
-        // GET: api/Fields/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Field>> GetField(int id)
-        {
-            var @field = await _context.Fields.FindAsync(id);
+        return @field;
+    }
 
-            if (@field == null)
+    // PUT: api/Fields/5
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutField(int id, Field @field)
+    {
+        if (id != @field.IdField)
+        {
+            return BadRequest();
+        }
+
+        _context.Entry(@field).State = EntityState.Modified;
+
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!FieldExists(id))
             {
                 return NotFound();
             }
 
-            return @field;
+            throw;
         }
 
-        // PUT: api/Fields/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutField(int id, Field @field)
+        return NoContent();
+    }
+
+    // POST: api/Fields
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [HttpPost]
+    public async Task<ActionResult<Field>> PostField(Field @field)
+    {
+        _context.Fields.Add(@field);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction("GetField", new { id = @field.IdField }, @field);
+    }
+
+    // DELETE: api/Fields/5
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteField(int id)
+    {
+        var @field = await _context.Fields.FindAsync(id);
+        if (@field == null)
         {
-            if (id != @field.IdField)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(@field).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!FieldExists(id))
-                {
-                    return NotFound();
-                }
-
-                throw;
-            }
-
-            return NoContent();
+            return NotFound();
         }
 
-        // POST: api/Fields
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Field>> PostField(Field @field)
-        {
-            _context.Fields.Add(@field);
-            await _context.SaveChangesAsync();
+        _context.Fields.Remove(@field);
+        await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetField", new { id = @field.IdField }, @field);
-        }
+        return NoContent();
+    }
 
-        // DELETE: api/Fields/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteField(int id)
-        {
-            var @field = await _context.Fields.FindAsync(id);
-            if (@field == null)
-            {
-                return NotFound();
-            }
-
-            _context.Fields.Remove(@field);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool FieldExists(int id)
-        {
-            return _context.Fields.Any(e => e.IdField == id);
-        }
+    private bool FieldExists(int id)
+    {
+        return _context.Fields.Any(e => e.IdField == id);
     }
 }

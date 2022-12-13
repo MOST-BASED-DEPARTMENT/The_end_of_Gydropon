@@ -1,7 +1,10 @@
-﻿using System.Data.SqlClient;
-using API.Models;
+﻿using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
+using System.Net;
+using System.Text;
 
 namespace API.Controllers
 {
@@ -19,7 +22,7 @@ namespace API.Controllers
         }
 
         // GET: api/Ttasks/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Ttask>> GetTtask(int id)
         {
             var ttask = await _context.Ttasks.FindAsync(id);
@@ -32,16 +35,24 @@ namespace API.Controllers
             return ttask;
         }
 
-        [HttpGet, Route("api/TestProcedure/{country}")]
-        public List<Ttask> GetTasks(string country)
+        [HttpGet, Route("GetTasksProcedure")]
+        public HttpResponseMessage GetTasksProcedure(int? id)
         {
-            var parameter = new SqlParameter
+            try
             {
-                ParameterName = "Country",
-                Value = "USA"
-            };
-
-            var countries = _context.web_api_Test.SqlQuery<web_api_Test>("exec FindPeople @Country", parameter).ToList<web_api_Test>();
+                var taskId = new SqlParameter("@Ttask_id", id);
+                var courseList = _context.Database.SqlQuery<Ttask>($"EXEC Get_Ttask_Card @ID_Ttask={taskId.Value}")
+                    .ToList();
+                return new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent(JArray.FromObject(courseList).ToString(), Encoding.UTF8,
+                        "application/json")
+                };
+            }
+            catch
+            {
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            }
         }
     }
 }
