@@ -8,12 +8,7 @@ namespace API.Controllers
     [ApiController]
     public class TtaskStatusController : ControllerBase
     {
-        private readonly AgronomicAppTestUserContext _context;
-
-        public TtaskStatusController(AgronomicAppTestUserContext context)
-        {
-            _context = context;
-        }
+        private readonly AgronomicAppTestUserContext _context = new();
 
         // GET: api/TtaskStatus
         [HttpGet]

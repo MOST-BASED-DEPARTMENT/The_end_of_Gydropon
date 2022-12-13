@@ -8,12 +8,7 @@ namespace API.Controllers
     [ApiController]
     public class TtasksController : ControllerBase
     {
-        private readonly AgronomicAppTestUserContext _context;
-
-        public TtasksController(AgronomicAppTestUserContext context)
-        {
-            _context = context;
-        }
+        private readonly AgronomicAppTestUserContext _context = new();
 
         // GET: api/Ttasks
         [HttpGet]

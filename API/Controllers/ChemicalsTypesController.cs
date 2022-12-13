@@ -8,12 +8,7 @@ namespace API.Controllers
     [ApiController]
     public class ChemicalsTypesController : ControllerBase
     {
-        private readonly AgronomicAppTestUserContext _context;
-
-        public ChemicalsTypesController(AgronomicAppTestUserContext context)
-        {
-            _context = context;
-        }
+        private readonly AgronomicAppTestUserContext _context = new();
 
         // GET: api/ChemicalsTypes
         [HttpGet]

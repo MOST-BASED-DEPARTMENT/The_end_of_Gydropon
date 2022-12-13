@@ -8,12 +8,7 @@ namespace API.Controllers
     [ApiController]
     public class PlantsController : ControllerBase
     {
-        private readonly AgronomicAppTestUserContext _context;
-
-        public PlantsController(AgronomicAppTestUserContext context)
-        {
-            _context = context;
-        }
+        private readonly AgronomicAppTestUserContext _context = new();
 
         // GET: api/Plants
         [HttpGet]

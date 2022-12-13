@@ -8,12 +8,8 @@ namespace API.Controllers
     [ApiController]
     public class AgriculturalMachineryTypesController : ControllerBase
     {
-        private readonly AgronomicAppTestUserContext _context;
+        private readonly AgronomicAppTestUserContext _context = new();
 
-        public AgriculturalMachineryTypesController(AgronomicAppTestUserContext context)
-        {
-            _context = context;
-        }
 
         // GET: api/AgriculturalMachineryTypes
         [HttpGet]

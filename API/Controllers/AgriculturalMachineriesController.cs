@@ -12,20 +12,10 @@ namespace API.Controllers
 
 
         // GET: api/GetAgriculturalMachineries
-        [Produces("application/json")]
-        [Route("GetAgriculturalMachineries")]
         [HttpGet]
-        public async Task<IActionResult> GetAgriculturalMachineries()
+        public async Task<ActionResult<IEnumerable<AgriculturalMachinery>>> GetAgriculturalMachineries()
         {
-            try
-            {
-                var products = _context.AgriculturalMachineries.ToList();
-                return Ok(products);
-            }
-            catch
-            {
-                return BadRequest();
-            }
+            return await _context.AgriculturalMachineries.ToListAsync();
         }
 
         // GET: api/AgriculturalMachineries/5
@@ -79,7 +69,8 @@ namespace API.Controllers
             _context.AgriculturalMachineries.Add(agriculturalMachinery);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAgriculturalMachinery", new { id = agriculturalMachinery.IdAgriculturalMachinery }, agriculturalMachinery);
+            return CreatedAtAction("GetAgriculturalMachinery",
+                new { id = agriculturalMachinery.IdAgriculturalMachinery }, agriculturalMachinery);
         }
 
         // DELETE: api/AgriculturalMachineries/5
