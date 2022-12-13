@@ -1,5 +1,4 @@
-﻿using API.Interface;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Models;
 
@@ -9,30 +8,24 @@ namespace API.Controllers
     [ApiController]
     public class AgriculturalMachineriesController : ControllerBase
     {
-        private readonly AgronomicAppTestUserContext _context;
-        private readonly IAgriculturalMachinery _AMR;
+        private readonly AgronomicAppTestUserContext _context = new();
 
-        public AgriculturalMachineriesController(AgronomicAppTestUserContext context)
-        {
-            _context = context;
-        }
-
-        /*
-
-        // GET: api/AgriculturalMachineries
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<AgriculturalMachinery>>> GetAgriculturalMachineries()
-        {
-            return await _context.AgriculturalMachineries.ToListAsync();
-        }
-        */
 
         // GET: api/GetAgriculturalMachineries
+        [Produces("application/json")]
         [Route("GetAgriculturalMachineries")]
         [HttpGet]
         public async Task<IActionResult> GetAgriculturalMachineries()
         {
-            return Ok(await _AMR.GetAgriculturalMachinery());
+            try
+            {
+                var products = _context.AgriculturalMachineries.ToList();
+                return Ok(products);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         // GET: api/AgriculturalMachineries/5
