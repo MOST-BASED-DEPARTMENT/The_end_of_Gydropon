@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\79103\Documents\GitHub\The_end_of_Gydropon\API\bin\Release\net6.0\publish\pivo</_PublishTargetUrl>
+    <_PublishTargetUrl>bin\Release\net6.0\publish\pivo</_PublishTargetUrl>
     <History>True|2022-12-11T06:47:11.1229484Z;</History>
     <LastFailureDetails />
   </PropertyGroup>
