@@ -21,7 +21,7 @@ public class PlantsTypesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<PlantsType>> GetPlantsType(int id)
     {
-        var plantsType = await _context.PlantsTypes.FindAsync(id);
+        PlantsType? plantsType = await _context.PlantsTypes.FindAsync(id);
 
         if (plantsType == null)
         {
@@ -75,7 +75,7 @@ public class PlantsTypesController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeletePlantsType(int id)
     {
-        var plantsType = await _context.PlantsTypes.FindAsync(id);
+        PlantsType? plantsType = await _context.PlantsTypes.FindAsync(id);
         if (plantsType == null)
         {
             return NotFound();

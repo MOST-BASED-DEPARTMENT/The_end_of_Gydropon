@@ -21,7 +21,7 @@ public class ChemicalsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<Chemical>> GetChemical(int id)
     {
-        var chemical = await _context.Chemicals.FindAsync(id);
+        Chemical? chemical = await _context.Chemicals.FindAsync(id);
 
         if (chemical == null)
         {
@@ -75,7 +75,7 @@ public class ChemicalsController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteChemical(int id)
     {
-        var chemical = await _context.Chemicals.FindAsync(id);
+        Chemical? chemical = await _context.Chemicals.FindAsync(id);
         if (chemical == null)
         {
             return NotFound();

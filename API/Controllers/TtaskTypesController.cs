@@ -21,7 +21,7 @@ public class TtaskTypesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<TtaskType>> GetTtaskType(int id)
     {
-        var ttaskType = await _context.TtaskTypes.FindAsync(id);
+        TtaskType? ttaskType = await _context.TtaskTypes.FindAsync(id);
 
         if (ttaskType == null)
         {
@@ -75,7 +75,7 @@ public class TtaskTypesController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteTtaskType(int id)
     {
-        var ttaskType = await _context.TtaskTypes.FindAsync(id);
+        TtaskType? ttaskType = await _context.TtaskTypes.FindAsync(id);
         if (ttaskType == null)
         {
             return NotFound();

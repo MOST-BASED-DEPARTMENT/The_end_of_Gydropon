@@ -4,7 +4,7 @@ using API.Models;
 
 namespace API.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/[controller]/{id:int}")]
 [ApiController]
 public class FieldsController : ControllerBase
 {
@@ -18,30 +18,30 @@ public class FieldsController : ControllerBase
     }
 
     // GET: api/Fields/5
-    [HttpGet("{id}")]
+    [HttpGet("")]
     public async Task<ActionResult<Field>> GetField(int id)
     {
-        var @field = await _context.Fields.FindAsync(id);
+        Field? field = await _context.Fields.FindAsync(id);
 
-        if (@field == null)
+        if (field == null)
         {
             return NotFound();
         }
 
-        return @field;
+        return field;
     }
 
     // PUT: api/Fields/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutField(int id, Field @field)
+    [HttpPut("")]
+    public async Task<IActionResult> PutField(int id, Field field)
     {
-        if (id != @field.IdField)
+        if (id != field.IdField)
         {
             return BadRequest();
         }
 
-        _context.Entry(@field).State = EntityState.Modified;
+        _context.Entry(field).State = EntityState.Modified;
 
         try
         {
@@ -63,25 +63,25 @@ public class FieldsController : ControllerBase
     // POST: api/Fields
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
-    public async Task<ActionResult<Field>> PostField(Field @field)
+    public async Task<ActionResult<Field>> PostField(Field field, int id)
     {
-        _context.Fields.Add(@field);
+        _context.Fields.Add(field);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetField", new { id = @field.IdField }, @field);
+        return CreatedAtAction("GetField", new { id = field.IdField }, field);
     }
 
     // DELETE: api/Fields/5
-    [HttpDelete("{id}")]
+    [HttpDelete("")]
     public async Task<IActionResult> DeleteField(int id)
     {
-        var @field = await _context.Fields.FindAsync(id);
-        if (@field == null)
+        Field? field = await _context.Fields.FindAsync(id);
+        if (field == null)
         {
             return NotFound();
         }
 
-        _context.Fields.Remove(@field);
+        _context.Fields.Remove(field);
         await _context.SaveChangesAsync();
 
         return NoContent();

@@ -1,5 +1,6 @@
 ﻿using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
@@ -31,10 +32,11 @@ public class TtasksController : ControllerBase
         return ttask;
     }
 
-    [HttpGet, Route("GetTasksProcedure")]
-    public IActionResult GetTasksProcedure([FromQuery] int? id)
+    /*[HttpGet, Route("GetTasksProcedure")]
+    public ICollection<Ttask> GetTasksProcedure(int? id)
     {
-        var result = _context.Ttasks.FromSql($"EXEC Get_Ttask_Card {id}").ToList();
-        return Ok(result);
-    }
+        var param_id = new SqlParameter("@ID_Ttask", id);
+        var result = _context.Ttasks.FromSql($"Get_Ttask_Card @ID_Ttask", param_id).ToList();
+        return result;
+    }*/
 }

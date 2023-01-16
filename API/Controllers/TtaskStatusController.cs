@@ -21,7 +21,7 @@ public class TtaskStatusController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<TtaskStatus>> GetTtaskStatus(int id)
     {
-        var ttaskStatus = await _context.TtaskStatuses.FindAsync(id);
+        TtaskStatus? ttaskStatus = await _context.TtaskStatuses.FindAsync(id);
 
         if (ttaskStatus == null)
         {
@@ -75,7 +75,7 @@ public class TtaskStatusController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteTtaskStatus(int id)
     {
-        var ttaskStatus = await _context.TtaskStatuses.FindAsync(id);
+        TtaskStatus? ttaskStatus = await _context.TtaskStatuses.FindAsync(id);
         if (ttaskStatus == null)
         {
             return NotFound();

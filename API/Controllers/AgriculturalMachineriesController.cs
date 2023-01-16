@@ -22,7 +22,7 @@ public class AgriculturalMachineriesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<AgriculturalMachinery>> GetAgriculturalMachinery(int id)
     {
-        var agriculturalMachinery = await _context.AgriculturalMachineries.FindAsync(id);
+        AgriculturalMachinery? agriculturalMachinery = await _context.AgriculturalMachineries.FindAsync(id);
 
         if (agriculturalMachinery == null)
         {
@@ -77,7 +77,7 @@ public class AgriculturalMachineriesController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAgriculturalMachinery(int id)
     {
-        var agriculturalMachinery = await _context.AgriculturalMachineries.FindAsync(id);
+        AgriculturalMachinery? agriculturalMachinery = await _context.AgriculturalMachineries.FindAsync(id);
         if (agriculturalMachinery == null)
         {
             return NotFound();

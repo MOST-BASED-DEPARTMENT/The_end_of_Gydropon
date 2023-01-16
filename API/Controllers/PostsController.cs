@@ -21,7 +21,7 @@ public class PostsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<Post>> GetPost(int id)
     {
-        var post = await _context.Posts.FindAsync(id);
+        Post? post = await _context.Posts.FindAsync(id);
 
         if (post == null)
         {
@@ -75,7 +75,7 @@ public class PostsController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeletePost(int id)
     {
-        var post = await _context.Posts.FindAsync(id);
+        Post? post = await _context.Posts.FindAsync(id);
         if (post == null)
         {
             return NotFound();
